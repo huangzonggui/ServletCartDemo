@@ -12,7 +12,7 @@ import entity.Items;
 //商品的业务逻辑类
 public class ItemsDAO {
 
-    // 获得所有的商品信息
+    // 链接数据库，从数据库里获得所有的商品信息
     public ArrayList<Items> getAllItems() {
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -60,9 +60,9 @@ public class ItemsDAO {
 
     }
 
-    // 根据商品编号获得商品资料
+    // 链接数据库，从数据库里：根据商品编号获得商品资料
     public Items getItemsById(int id) {
-        Connection conn = null;
+        Connection conn;
         PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
@@ -92,7 +92,6 @@ public class ItemsDAO {
             if (rs != null) {
                 try {
                     rs.close();
-                    rs = null;
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
@@ -101,7 +100,6 @@ public class ItemsDAO {
             if (stmt != null) {
                 try {
                     stmt.close();
-                    stmt = null;
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
@@ -109,35 +107,27 @@ public class ItemsDAO {
 
         }
     }
+
     //获取最近浏览的前五条商品信息
-    public ArrayList<Items> getViewList(String list)
-    {
-        System.out.println("list:"+list);
+    public ArrayList<Items> getViewList(String list) {
+        System.out.println("list:" + list);
         ArrayList<Items> itemlist = new ArrayList<Items>();
-        int iCount=5; //每次返回前五条记录
-        if(list!=null&&list.length()>0)
-        {
+        int iCount = 5; //每次返回前五条记录
+        if (list != null && list.length() > 0) {
             String[] arr = list.split(",");
-            System.out.println("arr.length="+arr.length);
-            //如果商品记录大于等于5条
-            if(arr.length>=5)
-            {
-                for(int i=arr.length-1;i>=arr.length-iCount;i--)
-                {
+            System.out.println("arr.length=" + arr.length);
+            if (arr.length >= 5) {//如果商品记录大于等于5条
+                //(i=8-1;i>=3;i--)
+                for (int i = arr.length - 1; i >= arr.length - iCount; i--) {
                     itemlist.add(getItemsById(Integer.parseInt(arr[i])));
                 }
-            }
-            else
-            {
-                for(int i=arr.length-1;i>=0;i--)
-                {
+            } else {//如果商品小于5条
+                for (int i = arr.length - 1; i >= 0; i--) {
                     itemlist.add(getItemsById(Integer.parseInt(arr[i])));
                 }
             }
             return itemlist;
-        }
-        else
-        {
+        } else {
             return null;
         }
 
