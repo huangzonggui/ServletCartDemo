@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - shopping@localhost" uuid="86cc9b8e-be91-4dd7-9181-62776623f779">
+    <database-info product="MySQL" version="5.5.32" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+      <schema id="1" name="shopping">
+        <visible>1</visible>
+      </schema>
+      <schema id="2" name="appfuse"/>
+      <schema id="3" name="db-mcms-open"/>
+      <schema id="4" name="information_schema"/>
+      <schema id="5" name="myproject"/>
+      <schema id="6" name="mysql"/>
+      <schema id="7" name="order"/>
+      <schema id="8" name="performance_schema"/>
+      <schema id="9" name="tutorial_hibernate"/>
+      <schema id="10" name="tutorial_service"/>
+      <schema id="11" name="tutorial_spring"/>
+      <table id="12" parent="1" name="items"/>
+      <column id="13" parent="12" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="14" parent="12" name="name">
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="15" parent="12" name="city">
+        <data-type>varchar(50)|0</data-type>
+      </column>
+      <column id="16" parent="12" name="price">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="17" parent="12" name="number">
+        <data-type>int(11)|0</data-type>
+      </column>
+      <column id="18" parent="12" name="picture">
+        <data-type>varchar(500)|0</data-type>
+      </column>
+      <key id="19" parent="12" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+    </database-model>
+  </data-source>
+</component>
